@@ -5,12 +5,15 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Jt.Common.Tool
+namespace Jt.Common.Tool.Helper
 {
-    public class NameHelper
+    /// <summary>
+    /// 命名帮助类
+    /// </summary>
+    public class NamedHelper
     {
         /// <summary>
-        /// 下划线命名 user_name
+        /// 转化为下划线命名 user_name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -36,7 +39,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 驼峰命名 userName
+        /// 转化为驼峰命名 userName
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -66,7 +69,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// Pascal命名 UserName
+        /// 转化为Pascal命名 UserName
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>

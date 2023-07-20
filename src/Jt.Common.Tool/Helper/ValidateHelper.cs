@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Jt.Common.Tool
+namespace Jt.Common.Tool.Helper
 {
     /// <summary>
     /// 各种输入格式验证辅助类
@@ -125,7 +125,7 @@ namespace Jt.Common.Tool
         #region 验证输入字符串是否与模式字符串匹配
 
         /// <summary>
-        /// 验证输入字符串是否与模式字符串匹配，匹配返回true
+        /// 验证输入字符串是否与模式字符串匹配
         /// </summary>
         /// <param name="input">输入字符串</param>
         /// <param name="pattern">模式字符串</param>        
@@ -135,7 +135,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 验证输入字符串是否与模式字符串匹配，匹配返回true
+        /// 验证输入字符串是否与模式字符串匹配（有筛选条件）
         /// </summary>
         /// <param name="input">输入的字符串</param>
         /// <param name="pattern">模式字符串</param>
@@ -150,7 +150,8 @@ namespace Jt.Common.Tool
         #region 用户名密码格式
 
         /// <summary>
-        /// 返回字符串真实长度, 1个汉字长度为2
+        /// 返回字符串真实长度
+        /// 1个汉字长度为2
         /// </summary>
         /// <returns>字符长度</returns>
         public static int GetStringLength(string stringValue)
@@ -159,7 +160,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 检测用户名格式是否有效
+        /// 校验用户名有效性
         /// </summary>
         /// <param name="userName">用户名</param>
         /// <returns></returns>
@@ -177,7 +178,8 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 密码有效性（纯数字或者纯字母，不通过）
+        /// 校验密码有效性
+        /// （纯数字或者纯字母，不通过）
         /// </summary>
         /// <param name="password">密码字符串</param>
         /// <returns></returns>
@@ -186,16 +188,6 @@ namespace Jt.Common.Tool
             return Regex.IsMatch(password, PasswordRegex);
         }
 
-        /// <summary>
-        /// 校验密码规则
-        /// </summary>
-        /// <param name="strPawd">密码</param>
-        /// <returns></returns>
-        public static bool VerifyPawdRule(string strPawd)
-        {
-            Regex reg1 = new Regex(@"^(?![0-9a-zA-Z]+$)(?![0-9\W]+$)(?![a-zA-Z\W]+$)[a-zA-Z0-9\W_].{7,15}$");
-            return reg1.IsMatch(strPawd);
-        }
         #endregion
 
         #region 数字字符串检查
@@ -209,7 +201,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 是否数字字符串
+        /// 校验是否数字字符串
         /// </summary>
         /// <param name="inputData">输入字符串</param>
         /// <returns></returns>
@@ -221,7 +213,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 是否整数字符串
+        /// 校验是否整数字符串
         /// </summary>
         /// <param name="inputData">输入字符串</param>
         /// <returns></returns>
@@ -233,7 +225,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 是否整数字符串（带正负号）
+        /// 校验是否整数字符串（带正负号）
         /// </summary>
         /// <param name="inputData">输入字符串</param>
         /// <returns></returns>
@@ -245,7 +237,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 是否是浮点数
+        /// 校验是否是浮点数
         /// </summary>
         /// <param name="inputData">输入字符串</param>
         /// <returns></returns>
@@ -257,7 +249,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 是否是浮点数 可带正负号
+        /// 校验是否是浮点数 （可带正负号）
         /// </summary>
         /// <param name="inputData">输入字符串</param>
         /// <returns></returns>
@@ -273,7 +265,7 @@ namespace Jt.Common.Tool
         #region 中文检测
 
         /// <summary>
-        /// 检测是否有中文字符
+        /// 校验是否有中文字符
         /// </summary>
         public static bool IsHasCHZN(string inputData)
         {
@@ -283,7 +275,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary> 
-        /// 检测含有中文字符串的实际长度 
+        /// 获取含有中文字符串的实际长度 
         /// </summary> 
         /// <param name="inputData">字符串</param> 
         public static int GetCHZNLength(string inputData)
@@ -309,7 +301,7 @@ namespace Jt.Common.Tool
         #region 常用格式
 
         /// <summary>
-        /// 验证输入字母  "^[A-Za-z]+$"
+        /// 校验输入字母
         /// </summary>
         /// <param name="inputData">输入字符串</param>
         /// <returns></returns>
@@ -319,7 +311,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 验证身份证是否合法  15 和  18位两种
+        /// 校验身份证是否合法  15 和  18位两种
         /// </summary>
         /// <param name="idCard">要验证的身份证</param>
         public static bool IsIdCard(string idCard)
@@ -344,7 +336,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 是否是邮件地址
+        /// 校验是否是邮件地址
         /// </summary>
         /// <param name="inputData">输入字符串</param>
         /// <returns></returns>
@@ -356,7 +348,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 邮编有效性
+        /// 校验邮编有效性
         /// </summary>
         public static bool IsValidZip(string zip)
         {
@@ -366,7 +358,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 固定电话有效性
+        /// 校验固定电话有效性
         /// </summary>
         public static bool IsValidPhone(string phone)
         {
@@ -376,7 +368,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 手机有效性
+        /// 校验手机有效性
         /// </summary>
         public static bool IsValidMobile(string mobile)
         {
@@ -386,7 +378,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 电话有效性（固话和手机 ）
+        /// 校验电话有效性（固话和手机 ）
         /// </summary>
         public static bool IsValidPhoneAndMobile(string number)
         {
@@ -396,7 +388,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// Url有效性
+        /// 校验Url有效性
         /// </summary>
         public static bool IsValidURL(string url)
         {
@@ -404,7 +396,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// IP有效性
+        /// 校验IP有效性
         /// </summary>
         public static bool IsValidIP(string ip)
         {
@@ -412,7 +404,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// domain 有效性
+        /// 校验域名有效性
         /// </summary>
         /// <param name="host">域名</param>
         /// <returns></returns>
@@ -427,7 +419,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 判断是否为base64字符串
+        /// 校验是否为base64字符串
         /// </summary>
         public static bool IsBase64String(string str)
         {
@@ -435,7 +427,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 验证字符串是否是GUID
+        /// 校验字符串是否是GUID
         /// </summary>
         /// <param name="guid">字符串</param>
         /// <returns></returns>
@@ -452,7 +444,7 @@ namespace Jt.Common.Tool
         #region 日期检查
 
         /// <summary>
-        /// 判断输入的字符是否为日期
+        /// 校验输入的字符是否为日期
         /// </summary>
         public static bool IsDate(string strValue)
         {
@@ -460,7 +452,8 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 判断输入的字符是否为日期,如2004-07-12 14:25|||1900-01-01 00:00|||9999-12-31 23:59
+        /// 校验输入的字符是否为日期时间
+        /// 如：2004-07-12 14:25
         /// </summary>
         public static bool IsDateHourMinute(string strValue)
         {
@@ -472,11 +465,11 @@ namespace Jt.Common.Tool
         #region 其他
 
         /// <summary>
-        /// 检查字符串最大长度，返回指定长度的串
+        /// 校验字符串最大长度，返回指定长度的串
         /// </summary>
         /// <param name="inputData">输入字符串</param>
         /// <param name="maxLength">最大长度</param>
-        /// <returns></returns>			
+        /// <returns></returns>	
         public static string CheckMathLength(string inputData, int maxLength)
         {
             if (inputData != null && inputData != string.Empty)
@@ -488,33 +481,6 @@ namespace Jt.Common.Tool
                 }
             }
             return inputData;
-        }
-
-        /// <summary>
-        /// 转换成 HTML code
-        /// </summary>
-        public static string Encode(string str)
-        {
-            str = str.Replace("&", "&amp;");
-            str = str.Replace("'", "''");
-            str = str.Replace("\"", "&quot;");
-            str = str.Replace(" ", "&nbsp;");
-            str = str.Replace("<", "&lt;");
-            str = str.Replace(">", "&gt;");
-            str = str.Replace("\n", "<br>");
-            return str;
-        }
-        /// <summary>
-        ///解析html成 普通文本
-        /// </summary>
-        public static string Decode(string str)
-        {
-            str = str.Replace("<br>", "\n");
-            str = str.Replace("&gt;", ">");
-            str = str.Replace("&lt;", "<");
-            str = str.Replace("&nbsp;", " ");
-            str = str.Replace("&quot;", "\"");
-            return str;
         }
 
         #endregion
