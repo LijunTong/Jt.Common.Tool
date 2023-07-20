@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Jt.Common.Tool
+namespace Jt.Common.Tool.Helper
 {
     /// <summary>
     /// 雪花算法生成唯一ID
@@ -77,6 +77,11 @@ namespace Jt.Common.Tool
             SnowflakeHelper.workerId = workerId;
         }
 
+        /// <summary>
+        /// 生成雪花id
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public long NextId()
         {
             lock (this)

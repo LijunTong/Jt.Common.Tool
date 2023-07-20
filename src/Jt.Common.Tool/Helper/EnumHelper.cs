@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace Jt.Common.Tool
+namespace Jt.Common.Tool.Helper
 {
     public class EnumHelper
     {
+        /// <summary>
+        /// 获取枚举的每一项
+        /// </summary>
+        /// <param name="type">枚举类型</param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static string[] GetEnumItem(Type type)
         {
             if (!type.IsEnum)
@@ -65,21 +71,6 @@ namespace Jt.Common.Tool
             }
 
             return enumList;
-        }
-
-
-        public static Dictionary<int, string> EnumDesps(Type t)
-        {
-            Dictionary<int, string> dict = new Dictionary<int, string>();
-
-            if (t.IsEnum)
-            {
-                foreach (var v in t.GetEnumValues())
-                {
-                    dict.Add((int)v, GetEnumDesp(t, (int)v));
-                }
-            }
-            return dict;
         }
     }
 
