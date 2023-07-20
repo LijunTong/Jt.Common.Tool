@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jt.Common.Tool
+namespace Jt.Common.Tool.Helper
 {
     public class ResSystemHelper
     {
@@ -41,7 +41,7 @@ namespace Jt.Common.Tool
 
 
         /// <summary>
-        /// 获取父目录的路径信息
+        /// 获取文件名称
         /// </summary>
         public static string GetFileName(string path)
         {
@@ -49,7 +49,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 获取filePath的相对于BaseDir的路径
+        /// 获取指定路径和基础目录的相对路径
         /// </summary>
         public static string RelativePath(string BaseDir, string filePath)
         {
@@ -59,11 +59,8 @@ namespace Jt.Common.Tool
             return relativePath;
         }
 
-
-        //-----------------------------------------------------------------------------------------
-
         /// <summary>
-        /// 获取paths路径下所有文件信息
+        /// 获取路径路径下所有文件信息
         /// </summary>
         public static string[] GetSubFiles(string[] Paths)
         {
@@ -83,7 +80,7 @@ namespace Jt.Common.Tool
         /// <summary>
         /// 合并list1和list2到新的list
         /// </summary>
-        public static List<string> ListAdd(List<string> list1, List<string> list2)
+        private static List<string> ListAdd(List<string> list1, List<string> list2)
         {
             List<string> list = new List<string>();
 
@@ -98,7 +95,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 获取file目录下所有文件列表
+        /// 获取指定目录下所有文件列表
         /// </summary>
         public static List<string> GetSubFiles(string file)
         {

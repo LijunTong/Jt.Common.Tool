@@ -5,15 +5,15 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jt.Common.Tool
+namespace Jt.Common.Tool.Helper
 {
     public class RSAHelper
     {
         /// <summary>
         /// RSA加密
         /// </summary>
-        /// <param name="publickey"></param>
-        /// <param name="content"></param>
+        /// <param name="publickey">公钥</param>
+        /// <param name="content">加密内容</param>
         /// <returns></returns>
         public static string RSAEncrypt(string publickey, string content)
         {
@@ -28,8 +28,8 @@ namespace Jt.Common.Tool
         /// <summary>
         /// RSA解密
         /// </summary>
-        /// <param name="privatekey"></param>
-        /// <param name="content"></param>
+        /// <param name="privatekey">私钥</param>
+        /// <param name="content">解密内容</param>
         /// <returns></returns>
         public static string RSADecrypt(string privatekey, string content)
         {

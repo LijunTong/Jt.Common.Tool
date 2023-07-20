@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jt.Common.Tool
+namespace Jt.Common.Tool.Helper
 {
     public class ZipHelper
     {
@@ -39,7 +39,7 @@ namespace Jt.Common.Tool
         }
 
         /// <summary>
-        /// 压缩所有文件files为zip
+        /// 压缩所有文件为zip
         /// </summary>
         public static bool ZipFiles(string[] files, string Password = null, string[] ignoreNames = null)
         {
@@ -85,7 +85,7 @@ namespace Jt.Common.Tool
 
 
             ResSystemHelper.Mkdirs(ResSystemHelper.GetParent(zipPath));         // 创建目标路径
-                                                                                  //Console.WriteLine("创建压缩文件：" + zipPath);
+                                                                                //Console.WriteLine("创建压缩文件：" + zipPath);
 
             FileStream input = null;
             ZipOutputStream zipStream = new ZipOutputStream(File.Create(zipPath));
