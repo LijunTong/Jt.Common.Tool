@@ -9,6 +9,8 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/LijunTong/Jt.Common.Tool</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>公共帮助类以及扩展方法</Description>
+    <PackageIcon>Tools.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +19,10 @@
       <PackagePath>\</PackagePath>
     </None>
     <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="D:\Users\Downloads\Tools.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
