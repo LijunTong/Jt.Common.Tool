@@ -1,10 +1,18 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Jt.Common.Tool.Extension;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Jt.Common.ToolTests.Extension
+namespace Jt.Common.Tool.Extension.Tests
 {
-    internal class HttpClientExtensionTests
+    [TestClass()]
+    public class HttpClientExtensionTests
     {
+        [TestMethod()]
+        public void GetAsyncTest()
+        {
+            Assert.Fail();
+        }
     }
 }
