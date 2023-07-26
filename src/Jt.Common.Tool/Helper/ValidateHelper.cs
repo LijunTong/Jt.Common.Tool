@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -481,6 +482,24 @@ namespace Jt.Common.Tool.Helper
                 }
             }
             return inputData;
+        }
+
+        /// <summary>
+        /// 校验是否为json
+        /// </summary>
+        /// <param name="inputData"></param>
+        /// <returns></returns>
+        public static bool IsJson(string inputData)
+        {
+            try
+            {
+                JToken.Parse(inputData);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         #endregion

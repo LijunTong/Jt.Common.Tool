@@ -1,4 +1,4 @@
-﻿namespace Jt.Common.ToolTests.API
+﻿namespace Jt.Common.ToolTests
 {
     public class User
     {
