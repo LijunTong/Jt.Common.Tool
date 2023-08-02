@@ -180,6 +180,8 @@
 
 - 校验字符串最大长度，返回指定长度的串
 
+- 校验是否为json
+
 ### ZipHelper
 
 - 根据给的文件参数，自动进行压缩或解压缩操作
@@ -188,8 +190,8 @@
 
 - 压缩指定的文件或文件夹为zip
 
--  判断文件名中是否含有ignoreNames中的某一项
+- 判断文件名中是否含有ignoreNames中的某一项
 
--  压缩所有文件files，为压缩文件zipFile, 以相对于BaseDir的路径构建压缩文件子目录，ignoreNames指定要忽略的文件或目录
+- 压缩所有文件files，为压缩文件zipFile, 以相对于BaseDir的路径构建压缩文件子目录，ignoreNames指定要忽略的文件或目录
 
--  解压文件 到指定的路径，可通过targeFileNames指定解压特定的文件
+- 解压文件 到指定的路径，可通过targeFileNames指定解压特定的文件

@@ -25,7 +25,7 @@ namespace Jt.Common.Tool.Extension
         /// <exception cref="ArgumentNullException">请求地址为空异常</exception>
         /// <exception cref="TimeoutException">超时异常</exception>
         /// <exception cref="Exception">其它异常</exception>
-        public static async Task<string> GetAsync(this HttpClient client, string url, Dictionary<string, string> query = null, Dictionary<string,string> header = null, int timeout = 10000, CancellationToken cancellationToken = default)
+        public static async Task<string> DoGetAsync(this HttpClient client, string url, Dictionary<string, object> query = null, Dictionary<string,string> header = null, int timeout = 10000, CancellationToken cancellationToken = default)
         {
             if (url.IsNullOrWhiteSpace())
             {
@@ -100,7 +100,7 @@ namespace Jt.Common.Tool.Extension
         /// <exception cref="ArgumentNullException">请求地址为空异常</exception>
         /// <exception cref="TimeoutException">超时异常</exception>
         /// <exception cref="Exception"></exception>
-        public static async Task<string> PostAsync(this HttpClient client, string url, string content, Dictionary<string, string> header = null, int timeOut = 10000, CancellationToken cancellationToken = default)
+        public static async Task<string> DoPostAsync(this HttpClient client, string url, string content, Dictionary<string, string> header = null, int timeOut = 10000, CancellationToken cancellationToken = default)
         {
             if (url.IsNullOrWhiteSpace())
             {
@@ -160,7 +160,7 @@ namespace Jt.Common.Tool.Extension
             return resultData;
         }
 
-        private static string CombineUrlWithQueryString(string url, Dictionary<string, string> paramDic)
+        private static string CombineUrlWithQueryString(string url, Dictionary<string, object> paramDic)
         {
             var isEmptyParamDic = paramDic == null || !paramDic.Any();
 
@@ -170,12 +170,11 @@ namespace Jt.Common.Tool.Extension
             }
 
             var builder = new UriBuilder(url);
-            builder.Port = -1;
 
             var query = HttpUtility.ParseQueryString(builder.Query);
             foreach (var item in paramDic)
             {
-                query[item.Key] = item.Value;
+                query[item.Key] = item.Value.ToString();
             }
 
             builder.Query = query.ToString();

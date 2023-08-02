@@ -161,5 +161,33 @@ namespace Jt.Common.Tool.Extension
         {
             return Convert.ToString(bData, 16).PadLeft(2, '0').ToUpper();
         }
+
+        /// <summary>
+        /// 比较两个实例的字段的ToString()值是否完全相等
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t">实例</param>
+        /// <param name="target">目标实例</param>
+        /// <returns></returns>
+        public static bool ValueEquals<T>(this T t, T target)
+        {
+            if(t == null || target == null)
+            {
+                return false;
+            }
+
+            Type type = typeof(T);
+            foreach (var prop in type.GetProperties())
+            {
+                object value1 = prop.GetValue(target);
+                object value2 = prop.GetValue(t);
+                if (value1.ToString() != value2.ToString())
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
