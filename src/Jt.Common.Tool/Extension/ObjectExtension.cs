@@ -189,5 +189,35 @@ namespace Jt.Common.Tool.Extension
 
             return true;
         }
+
+        /// <summary>
+        /// 判断list是否为null或者为空
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lst">list</param>
+        /// <returns></returns>
+        public static bool IsNullOrEmpty<T>(this List<T> lst)
+        {
+            if (lst == null || lst.Count == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 判断list是否不为null并且不为空
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lst">list</param>
+        /// <returns></returns>
+        public static bool IsNotNullOrEmpty<T>(this List<T> lst)
+        {
+            if (lst != null && lst.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
