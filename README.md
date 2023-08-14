@@ -30,6 +30,10 @@
 
 - 将byte类型的转换为16进制字符串
 
+- 判断list是否为null或者为空
+
+- 判断list是否不为null并且不为空
+
 ### StringExtension
 
 - 判断字符串是否为空或只有空格
