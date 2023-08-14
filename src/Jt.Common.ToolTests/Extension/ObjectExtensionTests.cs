@@ -27,7 +27,7 @@ namespace Jt.Common.Tool.Extension.Tests
         {
             User user = new User() { Age = 1, Name = "apple" };
             var copy = user.DeepCopyByReflect();
-            Assert.IsTrue(!user.Equals(copy) && user.ValueEquals(copy) );
+            Assert.IsTrue(!user.Equals(copy) && user.ValueEquals(copy));
         }
 
         [Test()]
@@ -94,6 +94,21 @@ namespace Jt.Common.Tool.Extension.Tests
             string hexStr = bytes.ByteToHexString();
             Debug.WriteLine(hexStr);
             Assert.IsTrue(hexStr.IsNotNullOrWhiteSpace());
+        }
+
+        [Test()]
+        public void IsNullOrEmptyTest()
+        {
+            List<string> list = new List<string>();
+            List<string> list1 = null;
+            Assert.IsTrue(list.IsNullOrEmpty() && list1.IsNullOrEmpty());
+        }
+
+        [Test()]
+        public void IsNotNullOrEmptyTest()
+        {
+            List<string> list = new List<string>() { "1" };
+            Assert.IsTrue(list.IsNotNullOrEmpty());
         }
     }
 }
