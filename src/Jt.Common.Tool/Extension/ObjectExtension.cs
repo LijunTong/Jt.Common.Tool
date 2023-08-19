@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using System.Linq;
 
 namespace Jt.Common.Tool.Extension
 {
@@ -219,5 +220,23 @@ namespace Jt.Common.Tool.Extension
             }
             return false;
         }
+
+        /// <summary>
+        /// 将列表组合成字符串，以逗号分隔
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lst">list</param>
+        /// <param name="separator">分隔符</param>
+        /// <returns></returns>
+        public static string JoinSeparator<T>(this List<T> lst, Func<T, object> selector, string separator)
+        {
+            if (lst == null || lst.Count == 0)
+            {
+                return "";
+            }
+            
+            return string.Join(separator, lst.Select(selector));
+        }
+
     }
 }
