@@ -43,7 +43,7 @@ namespace Jt.Common.Tool.Extension
         /// </summary>
         /// <param name="strInput">输入字符串（明文）</param>
         /// <returns></returns>
-        public static string ToMD5(string strInput)
+        public static string ToMD5(this string strInput)
         {
             string result = "";
             if (strInput.IsNotNullOrWhiteSpace())
