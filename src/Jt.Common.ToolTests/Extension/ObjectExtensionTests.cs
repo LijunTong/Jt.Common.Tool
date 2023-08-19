@@ -110,5 +110,15 @@ namespace Jt.Common.Tool.Extension.Tests
             List<string> list = new List<string>() { "1" };
             Assert.IsTrue(list.IsNotNullOrEmpty());
         }
+
+        [Test()]
+        public void JoinSeparatorTest()
+        {
+            User user = new User() { Age = 1, Name = "apple" };
+            List<User> users = new List<User>() { user };
+            string data = users.JoinSeparator(x => x.Name, ",");
+            Debug.WriteLine(data);
+            Assert.IsTrue(data.IsNotNullOrWhiteSpace());
+        }
     }
 }
