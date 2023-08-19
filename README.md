@@ -44,6 +44,20 @@
 
 - MD5加密
 
+### DateTimeJsonConverter
+
+### ExpressionExtend
+
+- 合并表达式 expr1 AND expr2
+
+- 合并表达式 expr1 or expr2
+
+- 表达式取非
+
+### QueryableExtension
+
+- 分页查询
+
 ## Helper
 
 ### AppDomainHelper
