@@ -58,6 +58,10 @@
 
 - 分页查询
 
+### ServiceCollectionExtension
+
+- 服务接口注入
+
 ## Helper
 
 ### AppDomainHelper
