@@ -29,7 +29,7 @@ namespace Jt.Common.Tool.Extension
             NewExpressionVisitor visitor = new NewExpressionVisitor(newParameter);
             Expression left = visitor.Visit(expr1.Body);
             Expression right = visitor.Visit(expr2.Body);
-            BinaryExpression body = Expression.And(left, right);
+            BinaryExpression body = Expression.AndAlso(left, right);
             return Expression.Lambda<Func<T, bool>>(body, newParameter);
         }
 
@@ -50,7 +50,7 @@ namespace Jt.Common.Tool.Extension
             NewExpressionVisitor visitor = new NewExpressionVisitor(newParameter);
             Expression left = visitor.Visit(expr1.Body);
             Expression right = visitor.Visit(expr2.Body);
-            BinaryExpression body = Expression.Or(left, right);
+            BinaryExpression body = Expression.OrElse(left, right);
             return Expression.Lambda<Func<T, bool>>(body, newParameter);
         }
 
