@@ -126,13 +126,82 @@ namespace Jt.Common.Tool.Extension
             {
                 if (cancellationToken == default)
                 {
-                    // _httpClient.PostAsJsonAsync(url, data);这个接口在core中有实现方式有别，这里不用
                     resp = await client.PostAsync(url, reqContent, ctsTimeout.Token);
                 }
                 else
                 {
                     var ctsAltogather = CancellationTokenSource.CreateLinkedTokenSource(ctsTimeout.Token, cancellationToken);
                     resp = await client.PostAsync(url, reqContent, ctsAltogather.Token);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is TaskCanceledException && ctsTimeout.Token.IsCancellationRequested)
+                {
+                    throw new TimeoutException("请求服务器超时", ex);
+                }
+                else
+                {
+                    throw new Exception("请求服务器错误或网络错误", ex);
+                }
+            }
+
+            var resultData = await resp.Content.ReadAsStringAsync();
+            try
+            {
+                resp.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("服务器响应错误，内容：" + resultData, ex);
+            }
+
+            return resultData;
+        }
+
+        /// <summary>
+        /// Post请求
+        /// </summary>
+        /// <param name="client">客户端</param>
+        /// <param name="url">请求地址</param>
+        /// <param name="content">请求参数</param>
+        /// <param name="header">请求头</param>
+        /// <param name="timeOut">超时时间</param>
+        /// <param name="cancellationToken">cancellationToken</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">请求地址为空异常</exception>
+        /// <exception cref="TimeoutException">超时异常</exception>
+        /// <exception cref="Exception"></exception>
+        public static async Task<string> DoPostAsync(this HttpClient client, string url, HttpContent content, Dictionary<string, string> header = null, int timeOut = 10000, CancellationToken cancellationToken = default)
+        {
+            if (url.IsNullOrWhiteSpace())
+            {
+                throw new ArgumentNullException("url");
+            }
+
+            if (header != null)
+            {
+                foreach (var item in header)
+                {
+                    client.DefaultRequestHeaders.Add(item.Key, item.Value);
+                }
+            }
+
+            // 为了尽量减少等待消耗，设置超时（HttpClient默认是100s）
+            var ctsTimeout = new CancellationTokenSource();
+            ctsTimeout.CancelAfter(TimeSpan.FromMilliseconds(timeOut));
+
+            HttpResponseMessage resp;
+            try
+            {
+                if (cancellationToken == default)
+                {
+                    resp = await client.PostAsync(url, content, ctsTimeout.Token);
+                }
+                else
+                {
+                    var ctsAltogather = CancellationTokenSource.CreateLinkedTokenSource(ctsTimeout.Token, cancellationToken);
+                    resp = await client.PostAsync(url, content, ctsAltogather.Token);
                 }
             }
             catch (Exception ex)
