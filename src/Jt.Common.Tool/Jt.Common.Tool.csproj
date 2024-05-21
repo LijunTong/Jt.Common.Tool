@@ -11,7 +11,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Description>公共帮助类以及扩展方法</Description>
     <PackageIcon>Tools.png</PackageIcon>
-    <Version>1.0.8</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

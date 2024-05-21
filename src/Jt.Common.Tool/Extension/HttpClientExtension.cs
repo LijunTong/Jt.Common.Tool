@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -227,6 +228,29 @@ namespace Jt.Common.Tool.Extension
             }
 
             return resultData;
+        }
+
+        /// <summary>
+        /// 从远程下载图片
+        /// </summary>
+        /// <param name="client">客户端</param>
+        /// <param name="url">请求地址</param>
+        /// <param name="saveFold">保存路径</param>
+        /// <param name="fileName">文件名</param>
+        /// <returns></returns>
+        public static async Task<string> DownloadImageAsync(this HttpClient client, string url, string saveFold)
+        {
+            //文件名
+            string filename = System.IO.Path.GetFileName(url);
+            //扩展名
+            string extension = System.IO.Path.GetExtension(url);
+
+            saveFold = Path.Combine( saveFold ,filename);
+
+            byte[] imageBytes = await client.GetByteArrayAsync(url);
+            await File.WriteAllBytesAsync(saveFold, imageBytes);
+
+            return saveFold;
         }
 
         private static string CombineUrlWithQueryString(string url, Dictionary<string, object> paramDic)
