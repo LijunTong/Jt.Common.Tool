@@ -51,7 +51,7 @@ namespace Jt.Common.Tool.Extension.Tests
         public async Task DownloadImageAsyncTest()
         {
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images");
-            string name = await _httpClient.DownloadImageAsync("https://s1.cdn.jiaonizuocai.com/zhishi/201402/211108072408.jpg/NjQweDA.webp", path);
+            string name = await _httpClient.DownloadImageAsync("https://s4.cdn.jiaonizuocai.com/zhishi/201402/171848104813.jpg/NjQweDA", path,"a.webp");
             Debug.WriteLine(name);
             Assert.IsNotEmpty(name);
         }

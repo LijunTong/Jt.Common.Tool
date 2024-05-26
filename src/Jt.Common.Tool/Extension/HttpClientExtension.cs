@@ -238,18 +238,11 @@ namespace Jt.Common.Tool.Extension
         /// <param name="saveFold">保存路径</param>
         /// <param name="fileName">文件名</param>
         /// <returns></returns>
-        public static async Task<string> DownloadImageAsync(this HttpClient client, string url, string saveFold)
+        public static async Task<string> DownloadImageAsync(this HttpClient client, string url, string saveFold, string fileName)
         {
-            //文件名
-            string filename = System.IO.Path.GetFileName(url);
-            //扩展名
-            string extension = System.IO.Path.GetExtension(url);
-
-            saveFold = Path.Combine( saveFold ,filename);
-
+            saveFold = Path.Combine(saveFold, fileName);
             byte[] imageBytes = await client.GetByteArrayAsync(url);
             await File.WriteAllBytesAsync(saveFold, imageBytes);
-
             return saveFold;
         }
 
