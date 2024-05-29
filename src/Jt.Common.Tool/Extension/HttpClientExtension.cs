@@ -101,11 +101,16 @@ namespace Jt.Common.Tool.Extension
         /// <exception cref="ArgumentNullException">请求地址为空异常</exception>
         /// <exception cref="TimeoutException">超时异常</exception>
         /// <exception cref="Exception"></exception>
-        public static async Task<string> DoPostAsync(this HttpClient client, string url, string content, Dictionary<string, string> header = null, int timeOut = 10000, CancellationToken cancellationToken = default)
+        public static async Task<string> DoPostAsync(this HttpClient client, string url, string content, Dictionary<string, object> query = null, Dictionary<string, string> header = null, int timeOut = 10000, CancellationToken cancellationToken = default)
         {
             if (url.IsNullOrWhiteSpace())
             {
                 throw new ArgumentNullException("url");
+            }
+
+            if (query != null)
+            {
+                url = CombineUrlWithQueryString(url, query);
             }
 
             if (header != null)
@@ -173,11 +178,16 @@ namespace Jt.Common.Tool.Extension
         /// <exception cref="ArgumentNullException">请求地址为空异常</exception>
         /// <exception cref="TimeoutException">超时异常</exception>
         /// <exception cref="Exception"></exception>
-        public static async Task<string> DoPostAsync(this HttpClient client, string url, HttpContent content, Dictionary<string, string> header = null, int timeOut = 10000, CancellationToken cancellationToken = default)
+        public static async Task<string> DoPostAsync(this HttpClient client, string url, HttpContent content, Dictionary<string, object> query = null, Dictionary<string, string> header = null, int timeOut = 10000, CancellationToken cancellationToken = default)
         {
             if (url.IsNullOrWhiteSpace())
             {
                 throw new ArgumentNullException("url");
+            }
+
+            if (query != null)
+            {
+                url = CombineUrlWithQueryString(url, query);
             }
 
             if (header != null)
